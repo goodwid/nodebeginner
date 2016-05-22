@@ -1,6 +1,15 @@
+const exec = require('child_process').exec;
+
 function start() {
   console.log('handler "start" called');
-  return 'Hello Start';
+
+  let content = 'empty';
+  exec('ls -la', (err, stdout, stderr) => {
+    content = stdout;
+  });
+
+  return content;
+
 }
 
 function upload() {
