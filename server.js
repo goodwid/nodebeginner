@@ -13,7 +13,7 @@ function start(route, handle) {
       console.log(`received POST data: \n${body}\n`);
     });
     req.on('end', () => {
-      route(handle, pathName, res);
+      route(handle, pathName, res, body);
     });
   }
 

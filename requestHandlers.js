@@ -1,6 +1,6 @@
 const exec = require('child_process').exec;
 
-function start(res) {
+function start(res, data) {
   console.log('handler "start" called');
 
   const body = '<html>'+
@@ -20,10 +20,10 @@ function start(res) {
   res.end();
 }
 
-function upload(res) {
+function upload(res, data) {
   console.log('handler "upload" called');
   res.writeHead(200, {'Content-Type':'text/plain'});
-  res.write('Hello Upload');
+  res.write(`You've sent: ${data.replace('+',' ')}`);
   res.end();
 }
 
