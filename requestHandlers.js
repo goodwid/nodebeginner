@@ -1,4 +1,4 @@
-const exec = require('child_process').exec;
+const qs = require('querystring');
 
 function start(res, data) {
   console.log('handler "start" called');
@@ -23,7 +23,7 @@ function start(res, data) {
 function upload(res, data) {
   console.log('handler "upload" called');
   res.writeHead(200, {'Content-Type':'text/plain'});
-  res.write(`You've sent: ${data.replace('+',' ')}`);
+  res.write(`You've sent: ${qs.parse(data).text}`);
   res.end();
 }
 
