@@ -6,10 +6,10 @@ function start(route, handle) {
     const pathName = url.parse(req.url).pathname;
     console.log(`request for ${pathName} received.`);
 
-    route(handle, pathName);
 
     res.writeHead(200, {'Content-Type':'text/plain'});
-    res.write('Hello World');
+    const content = route(handle, pathName);
+    res.write(content);
     res.end();
   }
   http.createServer(onRequest).listen(9000);
